@@ -1,4 +1,4 @@
-package com.example.kotlinPractice.domain.dto.refrigerator
+package com.example.kotlinPractice.feature.refrigerator.api.dto
 
 
 import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientInfoDto

@@ -3,13 +3,13 @@ package com.example.kotlinPractice.service.Impl
 import com.example.kotlinPractice.feature.ingredient.api.dto.AddIngredientDto
 import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientCreateDto
 import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenCreateDto
-import com.example.kotlinPractice.domain.dto.refrigerator.RefrigeratorCreateDto
+import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorCreateDto
 import com.example.kotlinPractice.domain.repository.IngredientRepository
 import com.example.kotlinPractice.domain.repository.KitchenRepository
 import com.example.kotlinPractice.domain.repository.RefrigeratorRepository
 import com.example.kotlinPractice.feature.ingredient.api.IngredientService
 import com.example.kotlinPractice.feature.kitchen.api.KitchenService
-import com.example.kotlinPractice.service.RefrigeratorService
+import com.example.kotlinPractice.feature.refrigerator.api.RefrigeratorService
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll

@@ -1,4 +1,4 @@
-package com.example.kotlinPractice.domain.dto.refrigerator
+package com.example.kotlinPractice.feature.refrigerator.api.dto
 
 data class RefrigeratorCreateDto(
 

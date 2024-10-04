@@ -1,8 +1,8 @@
-package com.example.kotlinPractice.server.controller
+package com.example.kotlinPractice.feature.refrigerator.controller
 
-import com.example.kotlinPractice.domain.dto.refrigerator.RefrigeratorCreateDto
-import com.example.kotlinPractice.domain.dto.refrigerator.RefrigeratorInfoDto
-import com.example.kotlinPractice.service.RefrigeratorService
+import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorCreateDto
+import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorInfoDto
+import com.example.kotlinPractice.feature.refrigerator.api.RefrigeratorService
 import org.springframework.web.bind.annotation.*
 
 @RestController

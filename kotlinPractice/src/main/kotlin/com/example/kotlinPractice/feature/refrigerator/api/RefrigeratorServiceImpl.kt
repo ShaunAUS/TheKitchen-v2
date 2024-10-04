@@ -1,12 +1,11 @@
-package com.example.kotlinPractice.service.Impl
+package com.example.kotlinPractice.feature.refrigerator.api
 
-import com.example.kotlinPractice.domain.dto.refrigerator.RefrigeratorCreateDto
-import com.example.kotlinPractice.domain.dto.refrigerator.RefrigeratorInfoDto
+import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorCreateDto
+import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorInfoDto
 import com.example.kotlinPractice.domain.entity.Kitchen
 import com.example.kotlinPractice.domain.entity.Refrigerator
 import com.example.kotlinPractice.domain.repository.KitchenRepository
 import com.example.kotlinPractice.domain.repository.RefrigeratorRepository
-import com.example.kotlinPractice.service.RefrigeratorService
 import com.group.libraryapp.utils.findByIdOrThrow
 import lombok.extern.slf4j.Slf4j
 import org.springframework.stereotype.Service
