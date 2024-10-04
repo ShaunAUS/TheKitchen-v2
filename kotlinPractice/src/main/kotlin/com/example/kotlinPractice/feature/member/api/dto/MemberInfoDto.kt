@@ -1,4 +1,4 @@
-package com.example.kotlinPractice.domain.dto.member
+package com.example.kotlinPractice.feature.member.api.dto
 
 import com.example.kotlinPractice.domain.dto.kitchen.KitchenInfoDto
 import com.example.kotlinPractice.domain.entity.Member
@@ -16,7 +16,7 @@ data class MemberInfoDto(
 
     //TODO converter
     companion object {
-        fun of(member: Member):MemberInfoDto {
+        fun of(member: Member): MemberInfoDto {
             return MemberInfoDto(
                     name = member.name,
                     level = LevelType.intToType(member.level),

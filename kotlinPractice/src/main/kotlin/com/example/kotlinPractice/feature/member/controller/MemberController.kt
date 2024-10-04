@@ -1,9 +1,9 @@
-package com.example.kotlinPractice.server.controller
+package com.example.kotlinPractice.feature.member.controller
 
-import com.example.kotlinPractice.domain.dto.member.MemberCreateDto
-import com.example.kotlinPractice.domain.dto.member.MemberInfoDto
-import com.example.kotlinPractice.domain.dto.member.MemberUpdateDto
-import com.example.kotlinPractice.service.MemberService
+import com.example.kotlinPractice.feature.member.api.dto.MemberCreateDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberInfoDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberUpdateDto
+import com.example.kotlinPractice.feature.member.api.MemberService
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort

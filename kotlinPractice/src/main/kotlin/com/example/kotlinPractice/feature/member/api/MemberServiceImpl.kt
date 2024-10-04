@@ -1,18 +1,14 @@
-package com.example.kotlinPractice.service.Impl
+package com.example.kotlinPractice.feature.member.api
 
-import com.example.kotlinPractice.domain.dto.member.MemberCreateDto
-import com.example.kotlinPractice.domain.dto.member.MemberInfoDto
-import com.example.kotlinPractice.domain.dto.member.MemberWithPrepInfoDto
-import com.example.kotlinPractice.domain.dto.member.MemberUpdateDto
-import com.example.kotlinPractice.domain.dto.prep.PrepCreateDto
-import com.example.kotlinPractice.domain.dto.prep.PrepInfoDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberCreateDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberInfoDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberUpdateDto
 import com.example.kotlinPractice.domain.entity.Kitchen
 import com.example.kotlinPractice.domain.entity.Member
-import com.example.kotlinPractice.domain.entity.Prep
 import com.example.kotlinPractice.domain.repository.KitchenRepository
 import com.example.kotlinPractice.domain.repository.MemberRepository
 import com.example.kotlinPractice.domain.repository.PrepRepository
-import com.example.kotlinPractice.service.MemberService
+import com.example.kotlinPractice.feature.member.api.MemberService
 import com.group.libraryapp.utils.findByIdOrThrow
 import lombok.extern.slf4j.Slf4j
 import org.springframework.data.domain.Page

@@ -1,10 +1,9 @@
 package com.example.kotlinPractice.domain.entity
 
-import com.example.kotlinPractice.domain.dto.member.MemberCreateDto
-import com.example.kotlinPractice.domain.dto.member.MemberUpdateDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberCreateDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberUpdateDto
 import com.example.kotlinPractice.domain.enums.LevelType
 import com.example.kotlinPractice.domain.enums.SectionType
-import com.example.kotlinPractice.utils.ModelMapper
 import jakarta.persistence.*
 
 
@@ -47,7 +46,7 @@ class Member(
     }
 
     companion object {
-        fun of(memberCreateDto: MemberCreateDto,kitchen: Kitchen): Member {
+        fun of(memberCreateDto: MemberCreateDto, kitchen: Kitchen): Member {
             return Member(
                     name = memberCreateDto.name,
                     level = LevelType.typeToInt(memberCreateDto.level),

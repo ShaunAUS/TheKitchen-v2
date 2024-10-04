@@ -1,6 +1,6 @@
 package com.example.kotlinPractice.server.controller
 
-import com.example.kotlinPractice.domain.dto.member.MemberWithPrepInfoDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberWithPrepInfoDto
 import com.example.kotlinPractice.domain.dto.prep.PrepCreateDto
 import com.example.kotlinPractice.domain.dto.prep.PrepInfoDto
 import com.example.kotlinPractice.service.PrepService
