@@ -1,9 +1,9 @@
 package com.example.kotlinPractice.feature.member.api.dto
 
-import com.example.kotlinPractice.domain.dto.prep.PrepInfoDto
 import com.example.kotlinPractice.domain.entity.Member
 import com.example.kotlinPractice.domain.enums.LevelType
 import com.example.kotlinPractice.domain.enums.SectionType
+import com.example.kotlinPractice.feature.prep.api.dto.PrepInfoDto
 
 
 data class MemberWithPrepInfoDto (
