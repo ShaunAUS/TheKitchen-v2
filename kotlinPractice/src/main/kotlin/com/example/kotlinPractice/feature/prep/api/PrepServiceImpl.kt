@@ -1,14 +1,13 @@
-package com.example.kotlinPractice.service.Impl
+package com.example.kotlinPractice.feature.prep.api
 
 import com.example.kotlinPractice.feature.member.api.dto.MemberWithPrepInfoDto
-import com.example.kotlinPractice.domain.dto.prep.PrepCreateDto
-import com.example.kotlinPractice.domain.dto.prep.PrepInfoDto
 import com.example.kotlinPractice.domain.entity.Member
 import com.example.kotlinPractice.domain.entity.Prep
 import com.example.kotlinPractice.domain.repository.MemberRepository
 import com.example.kotlinPractice.domain.repository.PrepRepository
 import com.example.kotlinPractice.domain.repository.querydsl.PrepCustomRepository
-import com.example.kotlinPractice.service.PrepService
+import com.example.kotlinPractice.feature.prep.api.dto.PrepCreateDto
+import com.example.kotlinPractice.feature.prep.api.dto.PrepInfoDto
 import com.group.libraryapp.utils.findByIdOrThrow
 import lombok.extern.slf4j.Slf4j
 import org.springframework.stereotype.Service

@@ -2,7 +2,6 @@ package com.example.kotlinPractice.service.Impl
 
 import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenCreateDto
 import com.example.kotlinPractice.feature.member.api.dto.MemberCreateDto
-import com.example.kotlinPractice.domain.dto.prep.PrepCreateDto
 import com.example.kotlinPractice.domain.enums.ExecutionType
 import com.example.kotlinPractice.domain.enums.LevelType
 import com.example.kotlinPractice.domain.enums.SectionType
@@ -11,7 +10,8 @@ import com.example.kotlinPractice.domain.repository.MemberRepository
 import com.example.kotlinPractice.domain.repository.PrepRepository
 import com.example.kotlinPractice.feature.kitchen.api.KitchenService
 import com.example.kotlinPractice.feature.member.api.MemberService
-import com.example.kotlinPractice.service.PrepService
+import com.example.kotlinPractice.feature.prep.api.PrepService
+import com.example.kotlinPractice.feature.prep.api.dto.PrepCreateDto
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.*
 import org.springframework.beans.factory.annotation.Autowired

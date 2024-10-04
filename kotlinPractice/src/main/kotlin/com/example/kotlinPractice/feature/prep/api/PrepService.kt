@@ -1,8 +1,8 @@
-package com.example.kotlinPractice.service
+package com.example.kotlinPractice.feature.prep.api
 
 import com.example.kotlinPractice.feature.member.api.dto.MemberWithPrepInfoDto
-import com.example.kotlinPractice.domain.dto.prep.PrepCreateDto
-import com.example.kotlinPractice.domain.dto.prep.PrepInfoDto
+import com.example.kotlinPractice.feature.prep.api.dto.PrepCreateDto
+import com.example.kotlinPractice.feature.prep.api.dto.PrepInfoDto
 
 interface PrepService {
     fun createPrepToTargetMember(targetMemberId: Long, prepCreateDtos: List<PrepCreateDto>): MemberWithPrepInfoDto

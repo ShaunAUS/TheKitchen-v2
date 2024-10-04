@@ -1,4 +1,4 @@
-package com.example.kotlinPractice.domain.dto.prep
+package com.example.kotlinPractice.feature.prep.api.dto
 
 import com.example.kotlinPractice.domain.enums.ExecutionType
 import java.time.LocalDate
