@@ -4,7 +4,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/kitchen
     username: root
-    password: rh3dlekx123@
+    password: 12341234
 
   jpa:
     hibernate:
