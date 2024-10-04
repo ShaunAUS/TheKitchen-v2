@@ -1,6 +1,6 @@
 package com.example.kotlinPractice.feature.member.api.dto
 
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenInfoDto
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenInfoDto
 import com.example.kotlinPractice.domain.entity.Member
 import com.example.kotlinPractice.domain.enums.LevelType
 import com.example.kotlinPractice.domain.enums.SectionType

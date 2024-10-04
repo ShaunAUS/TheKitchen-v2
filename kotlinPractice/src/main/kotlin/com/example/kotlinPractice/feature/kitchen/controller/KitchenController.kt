@@ -1,8 +1,8 @@
-package com.example.kotlinPractice.server.controller
+package com.example.kotlinPractice.feature.kitchen.controller
 
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenCreateDto
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenInfoDto
-import com.example.kotlinPractice.service.KitchenService
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenCreateDto
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenInfoDto
+import com.example.kotlinPractice.feature.kitchen.api.KitchenService
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping

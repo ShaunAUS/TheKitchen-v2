@@ -1,4 +1,4 @@
-package com.example.kotlinPractice.domain.dto.kitchen
+package com.example.kotlinPractice.feature.kitchen.api.dto
 
 import com.example.kotlinPractice.domain.entity.Kitchen
 

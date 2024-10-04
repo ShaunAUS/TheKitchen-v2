@@ -1,6 +1,6 @@
 package com.example.kotlinPractice.service.Impl
 
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenCreateDto
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenCreateDto
 import com.example.kotlinPractice.feature.member.api.dto.MemberCreateDto
 import com.example.kotlinPractice.domain.dto.prep.PrepCreateDto
 import com.example.kotlinPractice.domain.enums.ExecutionType
@@ -9,7 +9,7 @@ import com.example.kotlinPractice.domain.enums.SectionType
 import com.example.kotlinPractice.domain.repository.KitchenRepository
 import com.example.kotlinPractice.domain.repository.MemberRepository
 import com.example.kotlinPractice.domain.repository.PrepRepository
-import com.example.kotlinPractice.service.KitchenService
+import com.example.kotlinPractice.feature.kitchen.api.KitchenService
 import com.example.kotlinPractice.feature.member.api.MemberService
 import com.example.kotlinPractice.service.PrepService
 import org.assertj.core.api.Assertions.assertThat

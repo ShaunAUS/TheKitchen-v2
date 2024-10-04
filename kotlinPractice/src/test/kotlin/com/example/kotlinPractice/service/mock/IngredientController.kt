@@ -4,10 +4,10 @@ import com.example.kotlinPractice.feature.ingredient.api.dto.AddIngredientDto
 import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientCreateDto
 import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientUseDto
 import com.example.kotlinPractice.feature.ingredient.api.dto.UseIngredientDto
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenCreateDto
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenCreateDto
 import com.example.kotlinPractice.domain.dto.refrigerator.RefrigeratorCreateDto
 import com.example.kotlinPractice.feature.ingredient.controller.IngredientController
-import com.example.kotlinPractice.service.KitchenService
+import com.example.kotlinPractice.feature.kitchen.api.KitchenService
 import com.example.kotlinPractice.service.RefrigeratorService
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.BeforeAll
