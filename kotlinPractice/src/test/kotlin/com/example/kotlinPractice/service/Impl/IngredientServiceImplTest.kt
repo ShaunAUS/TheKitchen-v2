@@ -1,24 +1,21 @@
 package com.example.kotlinPractice.service.Impl
 
-import com.example.kotlinPractice.domain.dto.ingredient.AddIngredientDto
-import com.example.kotlinPractice.domain.dto.ingredient.IngredientCreateDto
-import com.example.kotlinPractice.domain.dto.ingredient.IngredientUseDto
-import com.example.kotlinPractice.domain.dto.ingredient.UseIngredientDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.AddIngredientDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientCreateDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientUseDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.UseIngredientDto
 import com.example.kotlinPractice.domain.dto.kitchen.KitchenCreateDto
 import com.example.kotlinPractice.domain.dto.refrigerator.RefrigeratorCreateDto
 import com.example.kotlinPractice.domain.repository.IngredientRepository
 import org.assertj.core.api.Assertions.assertThat
 import com.example.kotlinPractice.domain.repository.KitchenRepository
 import com.example.kotlinPractice.domain.repository.RefrigeratorRepository
-import com.example.kotlinPractice.service.IngredientService
+import com.example.kotlinPractice.feature.ingredient.api.IngredientService
 import com.example.kotlinPractice.service.KitchenService
 import com.example.kotlinPractice.service.RefrigeratorService
 import org.junit.jupiter.api.*
-import org.junit.jupiter.api.Assertions.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.annotation.Rollback
-import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDate
 
 @SpringBootTest

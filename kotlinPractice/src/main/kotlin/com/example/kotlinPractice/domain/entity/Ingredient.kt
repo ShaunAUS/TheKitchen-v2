@@ -1,12 +1,8 @@
 package com.example.kotlinPractice.domain.entity
 
-import com.example.kotlinPractice.domain.dto.ingredient.IngredientCreateDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientCreateDto
 import jakarta.persistence.*
-import org.modelmapper.Converter
-import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDate
-import java.time.LocalDateTime
-import java.util.stream.Collectors
 
 @Entity
 class Ingredient(
@@ -51,7 +47,7 @@ class Ingredient(
 
 
     companion object {
-        fun of(ingredientCreateDto: IngredientCreateDto,refrigerator: Refrigerator): Ingredient {
+        fun of(ingredientCreateDto: IngredientCreateDto, refrigerator: Refrigerator): Ingredient {
             return Ingredient(
                     id = null,
                     name = ingredientCreateDto.name,

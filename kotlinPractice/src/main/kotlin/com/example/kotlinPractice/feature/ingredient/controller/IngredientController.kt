@@ -1,15 +1,10 @@
-package com.example.kotlinPractice.server.controller
+package com.example.kotlinPractice.feature.ingredient.controller
 
-import com.example.kotlinPractice.domain.dto.ingredient.AddIngredientDto
-import com.example.kotlinPractice.domain.dto.ingredient.IngredientCreateDto
-import com.example.kotlinPractice.domain.dto.ingredient.IngredientUseDto
-import com.example.kotlinPractice.domain.dto.ingredient.UseIngredientDto
-import com.example.kotlinPractice.domain.dto.refrigerator.RefrigeratorCreateDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.AddIngredientDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.UseIngredientDto
 import com.example.kotlinPractice.domain.dto.refrigerator.RefrigeratorInfoDto
-import com.example.kotlinPractice.service.IngredientService
-import org.springframework.web.bind.annotation.GetMapping
+import com.example.kotlinPractice.feature.ingredient.api.IngredientService
 import org.springframework.web.bind.annotation.PatchMapping
-import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping

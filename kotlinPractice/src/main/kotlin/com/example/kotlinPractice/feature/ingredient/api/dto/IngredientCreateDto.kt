@@ -1,4 +1,4 @@
-package com.example.kotlinPractice.domain.dto.ingredient
+package com.example.kotlinPractice.feature.ingredient.api.dto
 
 import com.example.kotlinPractice.domain.entity.Ingredient
 import com.group.libraryapp.utils.empty

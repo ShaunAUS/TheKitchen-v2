@@ -1,7 +1,7 @@
-package com.example.kotlinPractice.service.Impl
+package com.example.kotlinPractice.feature.ingredient.api
 
-import com.example.kotlinPractice.domain.dto.ingredient.AddIngredientDto
-import com.example.kotlinPractice.domain.dto.ingredient.UseIngredientDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.AddIngredientDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.UseIngredientDto
 import com.example.kotlinPractice.domain.dto.refrigerator.RefrigeratorInfoDto
 import com.example.kotlinPractice.domain.entity.Ingredient
 import com.example.kotlinPractice.domain.entity.Kitchen
@@ -9,7 +9,6 @@ import com.example.kotlinPractice.domain.entity.Refrigerator
 import com.example.kotlinPractice.domain.repository.IngredientRepository
 import com.example.kotlinPractice.domain.repository.KitchenRepository
 import com.example.kotlinPractice.domain.repository.RefrigeratorRepository
-import com.example.kotlinPractice.service.IngredientService
 import com.group.libraryapp.utils.empty
 import com.group.libraryapp.utils.findByIdOrThrow
 import com.group.libraryapp.utils.notEnough

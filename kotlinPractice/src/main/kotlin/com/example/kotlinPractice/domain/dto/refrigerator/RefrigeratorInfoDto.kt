@@ -1,7 +1,7 @@
 package com.example.kotlinPractice.domain.dto.refrigerator
 
 
-import com.example.kotlinPractice.domain.dto.ingredient.IngredientInfoDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientInfoDto
 import com.example.kotlinPractice.domain.entity.Refrigerator
 
 data class RefrigeratorInfoDto(

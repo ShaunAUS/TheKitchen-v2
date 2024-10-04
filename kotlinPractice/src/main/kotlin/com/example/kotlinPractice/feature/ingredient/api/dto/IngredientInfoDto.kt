@@ -1,7 +1,6 @@
-package com.example.kotlinPractice.domain.dto.ingredient
+package com.example.kotlinPractice.feature.ingredient.api.dto
 
 import com.example.kotlinPractice.domain.entity.Ingredient
-import com.example.kotlinPractice.utils.ModelMapper
 import java.time.LocalDate
 
 data class IngredientInfoDto(
@@ -13,7 +12,7 @@ data class IngredientInfoDto(
         val quantity : Int,
 ) {
     companion object {
-        fun of(ingredient: Ingredient) : IngredientInfoDto{
+        fun of(ingredient: Ingredient) : IngredientInfoDto {
             return IngredientInfoDto(
                     name = ingredient.name,
                     buyDate = ingredient.buyDate,
