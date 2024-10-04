@@ -1,32 +1,30 @@
 package com.example.kotlinPractice.service.Impl
 
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenCreateDto
-import com.example.kotlinPractice.domain.dto.member.MemberCreateDto
-import com.example.kotlinPractice.domain.dto.member.MemberUpdateDto
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenCreateDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberCreateDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberUpdateDto
 import com.example.kotlinPractice.domain.enums.LevelType
 import com.example.kotlinPractice.domain.enums.SectionType
 import com.example.kotlinPractice.domain.repository.KitchenRepository
 import com.example.kotlinPractice.domain.repository.MemberRepository
-import com.example.kotlinPractice.service.KitchenService
-import com.example.kotlinPractice.service.MemberService
+import com.example.kotlinPractice.feature.kitchen.api.KitchenService
+import com.example.kotlinPractice.feature.member.api.MemberService
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
-import org.springframework.test.context.web.WebAppConfiguration
 
 @SpringBootTest
 class MemberServiceImplTest @Autowired constructor(
-         val memberService: MemberService,
-         val memberRepository: MemberRepository,
-         val kitchenService: KitchenService,
-         val kitchenRepository: KitchenRepository,
+        val memberService: MemberService,
+        val memberRepository: MemberRepository,
+        val kitchenService: KitchenService,
+        val kitchenRepository: KitchenRepository,
 ) {
 
     @BeforeEach

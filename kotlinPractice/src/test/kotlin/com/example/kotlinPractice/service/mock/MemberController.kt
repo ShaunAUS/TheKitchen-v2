@@ -1,14 +1,14 @@
 package com.example.kotlinPractice.service.mock
 
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenCreateDto
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenInfoDto
-import com.example.kotlinPractice.domain.dto.member.MemberCreateDto
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenCreateDto
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenInfoDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberCreateDto
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch
-import com.example.kotlinPractice.domain.dto.member.MemberUpdateDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberUpdateDto
 import com.example.kotlinPractice.domain.enums.LevelType
 import com.example.kotlinPractice.domain.enums.SectionType
-import com.example.kotlinPractice.server.controller.MemberController
-import com.example.kotlinPractice.service.KitchenService
+import com.example.kotlinPractice.feature.member.controller.MemberController
+import com.example.kotlinPractice.feature.kitchen.api.KitchenService
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.*
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,7 +17,6 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 

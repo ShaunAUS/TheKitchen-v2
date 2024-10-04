@@ -1,6 +1,6 @@
 package com.example.kotlinPractice.domain.entity
 
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenCreateDto
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenCreateDto
 import jakarta.persistence.*
 
 @Entity

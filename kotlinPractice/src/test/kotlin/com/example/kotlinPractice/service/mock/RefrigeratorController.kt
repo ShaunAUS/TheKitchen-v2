@@ -1,13 +1,12 @@
 package com.example.kotlinPractice.service.mock
 
-import com.example.kotlinPractice.domain.dto.ingredient.AddIngredientDto
-import com.example.kotlinPractice.domain.dto.ingredient.IngredientCreateDto
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenCreateDto
-import com.example.kotlinPractice.domain.dto.refrigerator.RefrigeratorCreateDto
-import com.example.kotlinPractice.server.controller.MemberController
-import com.example.kotlinPractice.service.IngredientService
-import com.example.kotlinPractice.service.KitchenService
-import com.example.kotlinPractice.service.RefrigeratorService
+import com.example.kotlinPractice.feature.ingredient.api.dto.AddIngredientDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientCreateDto
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenCreateDto
+import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorCreateDto
+import com.example.kotlinPractice.feature.ingredient.api.IngredientService
+import com.example.kotlinPractice.feature.kitchen.api.KitchenService
+import com.example.kotlinPractice.feature.refrigerator.api.RefrigeratorService
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.*
 import org.springframework.beans.factory.annotation.Autowired

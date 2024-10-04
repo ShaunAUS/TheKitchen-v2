@@ -1,8 +1,8 @@
 package com.example.kotlinPractice.service.mock
 
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenCreateDto
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenInfoDto
-import com.example.kotlinPractice.server.controller.KitchenController
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenCreateDto
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenInfoDto
+import com.example.kotlinPractice.feature.kitchen.controller.KitchenController
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

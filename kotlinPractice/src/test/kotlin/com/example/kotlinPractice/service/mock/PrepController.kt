@@ -1,15 +1,13 @@
 package com.example.kotlinPractice.service.mock
 
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenCreateDto
-import com.example.kotlinPractice.domain.dto.member.MemberCreateDto
-import com.example.kotlinPractice.domain.dto.prep.PrepCreateDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberCreateDto
 import com.example.kotlinPractice.domain.enums.ExecutionType
 import com.example.kotlinPractice.domain.enums.LevelType
 import com.example.kotlinPractice.domain.enums.SectionType
-import com.example.kotlinPractice.server.controller.MemberController
-import com.example.kotlinPractice.server.controller.PrepController
-import com.example.kotlinPractice.service.KitchenService
-import com.example.kotlinPractice.service.MemberService
+import com.example.kotlinPractice.feature.kitchen.api.KitchenService
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenCreateDto
+import com.example.kotlinPractice.feature.member.api.MemberService
+import com.example.kotlinPractice.feature.prep.api.dto.PrepCreateDto
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.*
 import org.springframework.beans.factory.annotation.Autowired

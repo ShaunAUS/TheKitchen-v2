@@ -1,16 +1,14 @@
 package com.example.kotlinPractice.service.mock
 
-import com.example.kotlinPractice.domain.dto.ingredient.AddIngredientDto
-import com.example.kotlinPractice.domain.dto.ingredient.IngredientCreateDto
-import com.example.kotlinPractice.domain.dto.ingredient.IngredientUseDto
-import com.example.kotlinPractice.domain.dto.ingredient.UseIngredientDto
-import com.example.kotlinPractice.domain.dto.kitchen.KitchenCreateDto
-import com.example.kotlinPractice.domain.dto.refrigerator.RefrigeratorCreateDto
-import com.example.kotlinPractice.domain.enums.LevelType
-import com.example.kotlinPractice.server.controller.IngredientController
-import com.example.kotlinPractice.server.controller.PrepController
-import com.example.kotlinPractice.service.KitchenService
-import com.example.kotlinPractice.service.RefrigeratorService
+import com.example.kotlinPractice.feature.ingredient.api.dto.AddIngredientDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientCreateDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientUseDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.UseIngredientDto
+import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenCreateDto
+import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorCreateDto
+import com.example.kotlinPractice.feature.ingredient.controller.IngredientController
+import com.example.kotlinPractice.feature.kitchen.api.KitchenService
+import com.example.kotlinPractice.feature.refrigerator.api.RefrigeratorService
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach

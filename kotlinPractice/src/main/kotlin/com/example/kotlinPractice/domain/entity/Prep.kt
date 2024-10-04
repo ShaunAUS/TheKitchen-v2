@@ -1,7 +1,7 @@
 package com.example.kotlinPractice.domain.entity
 
-import com.example.kotlinPractice.domain.dto.prep.PrepCreateDto
 import com.example.kotlinPractice.domain.enums.ExecutionType
+import com.example.kotlinPractice.feature.prep.api.dto.PrepCreateDto
 import jakarta.persistence.*
 import java.time.LocalDate
 

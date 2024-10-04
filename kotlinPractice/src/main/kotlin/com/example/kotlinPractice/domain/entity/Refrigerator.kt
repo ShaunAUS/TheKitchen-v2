@@ -1,7 +1,6 @@
 package com.example.kotlinPractice.domain.entity
 
-import com.example.kotlinPractice.domain.dto.refrigerator.RefrigeratorCreateDto
-import com.example.kotlinPractice.utils.ModelMapper
+import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorCreateDto
 import jakarta.persistence.*
 
 //냉장고는 여러개가 될수 있다.
@@ -23,7 +22,7 @@ class Refrigerator(
         ) {
 
     companion object {
-        fun of(refrigeratorCreateDto: RefrigeratorCreateDto,kitchen: Kitchen): Refrigerator {
+        fun of(refrigeratorCreateDto: RefrigeratorCreateDto, kitchen: Kitchen): Refrigerator {
              return Refrigerator(
                     id = null,
                     name = refrigeratorCreateDto.name,
