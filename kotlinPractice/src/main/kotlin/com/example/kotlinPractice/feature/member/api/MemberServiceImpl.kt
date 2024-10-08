@@ -3,12 +3,6 @@ package com.example.kotlinPractice.feature.member.api
 import com.example.kotlinPractice.feature.member.api.dto.MemberCreateDto
 import com.example.kotlinPractice.feature.member.api.dto.MemberInfoDto
 import com.example.kotlinPractice.feature.member.api.dto.MemberUpdateDto
-import com.example.kotlinPractice.domain.entity.Kitchen
-import com.example.kotlinPractice.domain.entity.Member
-import com.example.kotlinPractice.domain.repository.KitchenRepository
-import com.example.kotlinPractice.domain.repository.MemberRepository
-import com.example.kotlinPractice.domain.repository.PrepRepository
-import com.example.kotlinPractice.feature.member.api.MemberService
 import com.group.libraryapp.utils.findByIdOrThrow
 import lombok.extern.slf4j.Slf4j
 import org.springframework.data.domain.Page
@@ -20,9 +14,7 @@ import org.springframework.transaction.annotation.Transactional
 @Slf4j
 class MemberServiceImpl(
 
-        private val memberRepository: MemberRepository,
-        private val prepRepository: PrepRepository,
-        private val kitchenRepository: KitchenRepository,
+    private val memberRepository: MemberRepository,
 
 ) : MemberService {
     @Transactional
@@ -56,9 +48,5 @@ class MemberServiceImpl(
 
     private fun getMemberOrThrow(memberId: Long): Member {
         return memberRepository.findByIdOrThrow(memberId)
-    }
-
-    private fun getKitchenById(kitchenId: Long): Kitchen {
-        return kitchenRepository.findByIdOrThrow(kitchenId)
     }
 }
