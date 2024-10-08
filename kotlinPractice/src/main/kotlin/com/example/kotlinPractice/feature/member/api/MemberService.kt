@@ -13,4 +13,6 @@ interface MemberService {
     fun updateMember(updateDto: MemberUpdateDto): MemberInfoDto
     fun removeMember(targetMemberId: Long)
     fun getMember(targetMemberId: Long): MemberInfoDto
+    fun getPrepBy(targetMemberId: Long): MemberPrepInfoDto
+
 }

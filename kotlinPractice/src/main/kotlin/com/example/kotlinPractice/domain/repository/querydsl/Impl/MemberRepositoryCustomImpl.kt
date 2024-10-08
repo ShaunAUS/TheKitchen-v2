@@ -2,7 +2,9 @@ package com.example.kotlinPractice.domain.repository.querydsl.Impl
 
 import com.example.kotlinPractice.domain.entity.Member
 import com.example.kotlinPractice.domain.entity.QMember.member
+import com.example.kotlinPractice.domain.entity.QPrep.prep
 import com.example.kotlinPractice.domain.repository.querydsl.MemberRepositoryCustom
+import com.example.kotlinPractice.feature.member.api.dto.MemberPrepInfoDto
 import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -29,5 +31,27 @@ class MemberRepositoryCustomImpl(
         return PageableExecutionUtils.getPage(members, page) {
             totalCount.fetchOne() ?: 0L
         }
+    }
+
+    override fun findBy(memberUniqueId: String): Member? {
+        return queryFactory
+            .select(member)
+            .from(member)
+            .where(member.uniqueId.eq(memberUniqueId))
+            .fetchOne()
+    }
+
+    override fun findMemberWithPreps(targetMemberUniqueId: Long): MemberPrepInfoDto {
+        val memberWithPreps = queryFactory
+            .selectFrom(member)
+            .leftJoin(member.preps, prep).fetchJoin()
+            .where(
+                member.uniqueId.eq(targetMemberUniqueId.toString())
+                    .and(member.deleteFlag.eq('N')),
+            )
+            .fetchOne() ?: throw NoSuchElementException("에외처리")
+
+        return MemberPrepInfoDto.of(memberWithPreps)
+
     }
 }

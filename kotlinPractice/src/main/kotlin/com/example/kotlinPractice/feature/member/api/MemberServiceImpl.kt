@@ -33,6 +33,11 @@ class MemberServiceImpl(
     }
 
     @Transactional(readOnly = true)
+    override fun getPrepBy(targetMemberUniqueId: Long): MemberPrepInfoDto {
+        return memberRepository.findMemberWithPreps(targetMemberUniqueId)
+    }
+
+    @Transactional(readOnly = true)
     override fun getMembers(pageable: Pageable): Page<MemberInfoDto> {
         return memberRepository.findMembers(pageable)
             .map { member -> MemberInfoDto.of(member) }

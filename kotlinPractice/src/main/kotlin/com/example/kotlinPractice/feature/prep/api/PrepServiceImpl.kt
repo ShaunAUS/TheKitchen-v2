@@ -57,12 +57,6 @@ class PrepServiceImpl(
         return PrepInfoDto.of(prepById)
     }
 
-    // TODO CustomRepository에서 가공해서 가져오는 방식
-    override fun getMyPrep(targetMemberId: Long): List<PrepInfoDto> {
-        return prepRepository.findByMemberId(targetMemberId)
-            .map { p -> PrepInfoDto.of(p) }
-            .toList()
-    }
 
     private fun findMemberByUniqueIdOrThrow(memberUniqueId: String): Member {
         return memberRepository.findBy(memberUniqueId) ?: throw NoSuchElementException("예외처리")

@@ -52,4 +52,12 @@ class MemberController(
     ) {
         return memberService.removeMember(targetMemberUniqueId)
     }
+
+    @GetMapping("/{targetMemberUniqueId}")
+    fun checkMyPrep(
+        @PathVariable targetMemberUniqueId: Long,
+        ): MemberPrepInfoDto {
+        return memberService.getPrepBy(targetMemberUniqueId)
+    }
+
 }
