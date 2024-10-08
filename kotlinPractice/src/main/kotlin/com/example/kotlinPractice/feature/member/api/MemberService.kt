@@ -7,9 +7,9 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 
 interface MemberService {
-    fun createMember(memberCreateDto: MemberCreateDto, kitchenId: Long): MemberInfoDto
+    fun createMember(memberCreateDto: MemberCreateDto): MemberInfoDto
     fun getMembers(pageable: Pageable): Page<MemberInfoDto>
-    fun updateMember(targetMemberId: Long, updateDto: MemberUpdateDto): MemberInfoDto
+    fun updateMember(updateDto: MemberUpdateDto): MemberInfoDto
     fun removeMember(targetMemberId: Long)
     fun getMember(targetMemberId: Long): MemberInfoDto
 }

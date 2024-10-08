@@ -25,10 +25,9 @@ class MemberController(
 
     @PostMapping("")
     fun createMember(
-            @RequestBody memberCreateDto: MemberCreateDto,
-            @RequestParam("kitchenId") kitchenId: Long,
+        @RequestBody memberCreateDto: MemberCreateDto,
     ): MemberInfoDto {
-        return memberService.createMember(memberCreateDto,kitchenId);
+        return memberService.createMember(memberCreateDto)
     }
 
     @GetMapping("/all")
@@ -47,15 +46,14 @@ class MemberController(
 
     @PatchMapping("/{targetMemberId}")
     fun updateMember(
-            @PathVariable targetMemberId: Long,
-            @RequestBody updateDto: MemberUpdateDto,
+        @RequestBody updateDto: MemberUpdateDto,
     ): MemberInfoDto {
-        return memberService.updateMember(targetMemberId, updateDto)
+        return memberService.updateMember(updateDto)
     }
 
     @DeleteMapping("/{targetMemberId}")
     fun removeMember(
-            @PathVariable targetMemberId: Long,
+        @PathVariable targetMemberId: Long,
     ) {
         return memberService.removeMember(targetMemberId)
     }

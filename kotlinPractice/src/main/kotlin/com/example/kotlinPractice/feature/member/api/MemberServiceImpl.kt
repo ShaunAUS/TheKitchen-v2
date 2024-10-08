@@ -43,9 +43,8 @@ class MemberServiceImpl(
     }
 
     @Transactional
-    override fun updateMember(targetMemberId: Long, updateDto: MemberUpdateDto): MemberInfoDto {
-        val targetMember = getMemberOrThrow(targetMemberId)
-
+    override fun updateMember(updateDto: MemberUpdateDto): MemberInfoDto {
+        val targetMember = getMemberOrThrow(updateDto.targetMemberId)
         targetMember.update(updateDto)
         return MemberInfoDto.of(targetMember)
     }
