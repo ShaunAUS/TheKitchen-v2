@@ -8,6 +8,8 @@ import com.example.kotlinPractice.feature.member.api.dto.MemberWithPrepInfoDto
 import com.example.kotlinPractice.feature.prep.api.dto.PrepCreateDto
 import com.example.kotlinPractice.feature.prep.api.dto.PrepInfoDto
 import com.example.kotlinPractice.feature.prep.api.dto.PrepUpdateDto
+import com.example.kotlinPractice.global.error.ErrorCode
+import com.example.kotlinPractice.global.error.exception.BusinessException
 import com.group.libraryapp.utils.findByIdOrThrow
 import lombok.extern.slf4j.Slf4j
 import org.springframework.stereotype.Service
@@ -59,7 +61,7 @@ class PrepServiceImpl(
 
 
     private fun findMemberByUniqueIdOrThrow(memberUniqueId: String): Member {
-        return memberRepository.findBy(memberUniqueId) ?: throw NoSuchElementException("예외처리")
+        return memberRepository.findBy(memberUniqueId) ?: throw BusinessException(ErrorCode.NOT_FOUND_MEMBER)
     }
 
 }
