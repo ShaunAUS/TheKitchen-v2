@@ -2,8 +2,8 @@ package com.example.kotlinPractice.domain.enums
 
 enum class SectionType(
 
-        val section: String,
-        val number: Int,
+    val section: String,
+    val number: Int,
 ) {
 
     COLD("콜드섹션", 0),
@@ -18,5 +18,4 @@ enum class SectionType(
             return values().first { t -> t.number == int }
         }
     }
-
 }

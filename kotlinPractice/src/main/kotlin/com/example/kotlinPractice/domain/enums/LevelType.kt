@@ -2,8 +2,8 @@ package com.example.kotlinPractice.domain.enums
 
 enum class LevelType(
 
-        val level: String,
-        val number: Int,
+    val level: String,
+    val number: Int,
 ) {
 
     COMMI_CHEF("코미쉐프", 0),
@@ -19,8 +19,6 @@ enum class LevelType(
 
         fun intToType(int: Int): LevelType {
             return values().first { t -> t.number == int }
-
-
         }
     }
 }

@@ -45,15 +45,12 @@ class MemberServiceImpl(
         val targetMember = getMemberOrThrow(targetMemberId)
 
         targetMember.update(updateDto)
-
         return MemberInfoDto.of(targetMember)
-
     }
 
     override fun removeMember(targetMemberId: Long) {
         memberRepository.deleteById(targetMemberId)
     }
-
 
     private fun getMemberOrThrow(memberId: Long): Member {
         return memberRepository.findByIdOrThrow(memberId)

@@ -1,11 +1,11 @@
 package com.example.kotlinPractice.feature.refrigerator.api
 
-import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorCreateDto
-import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorInfoDto
 import com.example.kotlinPractice.domain.entity.Kitchen
 import com.example.kotlinPractice.domain.entity.Refrigerator
 import com.example.kotlinPractice.domain.repository.KitchenRepository
 import com.example.kotlinPractice.domain.repository.RefrigeratorRepository
+import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorCreateDto
+import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorInfoDto
 import com.group.libraryapp.utils.findByIdOrThrow
 import lombok.extern.slf4j.Slf4j
 import org.springframework.stereotype.Service
@@ -15,8 +15,8 @@ import java.time.Duration
 @Service
 @Slf4j
 class RefrigeratorServiceImpl(
-        private val refrigeratorRepository: RefrigeratorRepository,
-        private val kitchenRepository: KitchenRepository,
+    private val refrigeratorRepository: RefrigeratorRepository,
+    private val kitchenRepository: KitchenRepository,
 ) : RefrigeratorService {
 
     override fun getRefrigerator(refrigeratorId: Long): RefrigeratorInfoDto {
@@ -49,9 +49,11 @@ class RefrigeratorServiceImpl(
     @Transactional
     private fun upToDateIngredientDate(refrigerator: Refrigerator) {
         refrigerator.ingredients
-                .stream()
-                .forEach { ingredient ->
-                    ingredient.updateExpirationPeriod(Duration.between(ingredient.buyDate.atStartOfDay(), ingredient.expireDate.atStartOfDay()).toDays())
-                }
+            .stream()
+            .forEach { ingredient ->
+                ingredient.updateExpirationPeriod(
+                    Duration.between(ingredient.buyDate.atStartOfDay(), ingredient.expireDate.atStartOfDay()).toDays(),
+                )
+            }
     }
 }

@@ -1,11 +1,10 @@
 package com.example.kotlinPractice.feature.prep.api
 
-import com.example.kotlinPractice.feature.member.api.dto.MemberWithPrepInfoDto
 import com.example.kotlinPractice.domain.entity.Member
 import com.example.kotlinPractice.domain.entity.Prep
 import com.example.kotlinPractice.domain.repository.MemberRepository
 import com.example.kotlinPractice.domain.repository.PrepRepository
-import com.example.kotlinPractice.domain.repository.querydsl.PrepCustomRepository
+import com.example.kotlinPractice.feature.member.api.dto.MemberWithPrepInfoDto
 import com.example.kotlinPractice.feature.prep.api.dto.PrepCreateDto
 import com.example.kotlinPractice.feature.prep.api.dto.PrepInfoDto
 import com.group.libraryapp.utils.findByIdOrThrow
@@ -21,15 +20,14 @@ class PrepServiceImpl(
         private val prepCustomRepository: PrepCustomRepository
 ) : PrepService {
 
-
-    //다른 맴버에게 주는 형식
+    // 다른 맴버에게 주는 형식
     override fun createPrepToTargetMember(targetMemberId: Long, prepCreateDtos: List<PrepCreateDto>): MemberWithPrepInfoDto {
 
         val prepList = mutableListOf<Prep>()
         val targetMember = getMemberOrThrow(targetMemberId)
 
         for (prepCreateDto in prepCreateDtos) {
-            prepList.add(Prep.of(prepCreateDto,targetMember))
+            prepList.add(Prep.of(prepCreateDto, targetMember))
         }
         prepRepository.saveAll(prepList)
 
@@ -42,7 +40,6 @@ class PrepServiceImpl(
         prepById.updatePrepStatus()
 
         return PrepInfoDto.of(prepById)
-
     }
 
     //TODO CustomRepository에서 가공해서 가져오는 방식
@@ -53,9 +50,7 @@ class PrepServiceImpl(
 
     }
 
-
     private fun getMemberOrThrow(memberId: Long): Member {
         return memberRepository.findByIdOrThrow(memberId)
     }
-
 }

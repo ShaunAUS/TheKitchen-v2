@@ -6,6 +6,6 @@ import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorInfoD
 interface RefrigeratorService {
     fun getRefrigerator(refrigeratorId: Long): RefrigeratorInfoDto
     fun remove(refrigeratorId: Long)
-    fun createRefrigerator(refrigeratorCreateDto: RefrigeratorCreateDto, kitchenId:Long): RefrigeratorInfoDto
+    fun createRefrigerator(refrigeratorCreateDto: RefrigeratorCreateDto, kitchenId: Long): RefrigeratorInfoDto
     fun updateRefrigerator(refrigeratorId: Long): RefrigeratorInfoDto
 }
