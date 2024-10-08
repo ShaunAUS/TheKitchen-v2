@@ -52,6 +52,5 @@ class MemberRepositoryCustomImpl(
             .fetchOne() ?: throw NoSuchElementException("에외처리")
 
         return MemberPrepInfoDto.of(memberWithPreps)
-
     }
 }
