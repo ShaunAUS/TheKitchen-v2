@@ -1,5 +1,7 @@
 package com.example.kotlinPractice.feature.member.api
 
+import com.example.kotlinPractice.domain.entity.Member
+import com.example.kotlinPractice.domain.repository.MemberRepository
 import com.example.kotlinPractice.feature.member.api.dto.MemberCreateDto
 import com.example.kotlinPractice.feature.member.api.dto.MemberInfoDto
 import com.example.kotlinPractice.feature.member.api.dto.MemberUpdateDto
@@ -30,8 +32,8 @@ class MemberServiceImpl(
 
     @Transactional(readOnly = true)
     override fun getMembers(pageable: Pageable): Page<MemberInfoDto> {
-        return memberRepository.findAll(pageable)
-                .map { member -> MemberInfoDto.of(member) }
+        return memberRepository.findMembers(pageable)
+            .map { member -> MemberInfoDto.of(member) }
     }
 
     @Transactional
@@ -43,7 +45,7 @@ class MemberServiceImpl(
 
     @Transactional
     override fun removeMember(targetMemberId: Long) {
-        memberRepository.deleteById(targetMemberId)
+        memberRepository.findByIdOrThrow(targetMemberId).delete()
     }
 
     private fun getMemberOrThrow(memberId: Long): Member {
