@@ -4,7 +4,9 @@ import com.example.kotlinPractice.domain.entity.Member
 import com.example.kotlinPractice.domain.repository.MemberRepository
 import com.example.kotlinPractice.feature.member.api.dto.MemberCreateDto
 import com.example.kotlinPractice.feature.member.api.dto.MemberInfoDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberPrepInfoDto
 import com.example.kotlinPractice.feature.member.api.dto.MemberUpdateDto
+import com.example.kotlinPractice.feature.prep.api.dto.PrepInfoDto
 import com.group.libraryapp.utils.findByIdOrThrow
 import lombok.extern.slf4j.Slf4j
 import org.springframework.data.domain.Page
@@ -28,6 +30,11 @@ class MemberServiceImpl(
     @Transactional(readOnly = true)
     override fun getMember(targetMemberId: Long): MemberInfoDto {
         return MemberInfoDto.of(getMemberOrThrow(targetMemberId))
+    }
+
+    @Transactional(readOnly = true)
+    override fun getPrepBy(targetMemberUniqueId: Long): MemberPrepInfoDto {
+        return memberRepository.findMemberWithPreps(targetMemberUniqueId)
     }
 
     @Transactional(readOnly = true)

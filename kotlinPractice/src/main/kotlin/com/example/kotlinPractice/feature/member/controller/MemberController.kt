@@ -3,18 +3,13 @@ package com.example.kotlinPractice.feature.member.controller
 import com.example.kotlinPractice.feature.member.api.MemberService
 import com.example.kotlinPractice.feature.member.api.dto.MemberCreateDto
 import com.example.kotlinPractice.feature.member.api.dto.MemberInfoDto
+import com.example.kotlinPractice.feature.member.api.dto.MemberPrepInfoDto
 import com.example.kotlinPractice.feature.member.api.dto.MemberUpdateDto
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.web.PageableDefault
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PatchMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/v1/members")
@@ -37,11 +32,11 @@ class MemberController(
         return memberService.getMembers(pageable)
     }
 
-    @GetMapping("/{targetMemberId}")
+    @GetMapping("/{targetMemberUniqueId}")
     fun getMember(
-        @PathVariable targetMemberId: Long,
+        @PathVariable targetMemberUniqueId: Long,
     ): MemberInfoDto {
-        return memberService.getMember(targetMemberId)
+        return memberService.getMember(targetMemberUniqueId)
     }
 
     @PatchMapping("")
@@ -51,10 +46,18 @@ class MemberController(
         return memberService.updateMember(updateDto)
     }
 
-    @PatchMapping("/{targetMemberId}")
+    @PatchMapping("/{targetMemberUniqueId}")
     fun removeMember(
-        @PathVariable targetMemberId: Long,
+        @PathVariable targetMemberUniqueId: Long,
     ) {
-        return memberService.removeMember(targetMemberId)
+        return memberService.removeMember(targetMemberUniqueId)
     }
+
+    @GetMapping("/prep/{targetMemberUniqueId}")
+    fun checkMyPrep(
+        @PathVariable targetMemberUniqueId: Long,
+        ): MemberPrepInfoDto {
+        return memberService.getPrepBy(targetMemberUniqueId)
+    }
+
 }

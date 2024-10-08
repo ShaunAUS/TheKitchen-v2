@@ -10,7 +10,7 @@ data class MemberWithPrepInfoDto(
     val level: LevelType,
     val section: SectionType,
     val experience: Int?,
-    val prepList: List<PrepInfoDto>
+    val preps: List<PrepInfoDto>
 ) {
     companion object {
         fun of(member: Member): MemberWithPrepInfoDto {
@@ -19,7 +19,7 @@ data class MemberWithPrepInfoDto(
                 level = LevelType.intToType(member.level),
                 section = SectionType.intToType(member.section),
                 experience = member.experience,
-                prepList = member.preps.map { p -> PrepInfoDto.of(p) }
+                preps = member.preps.map { p -> PrepInfoDto.of(p) }
             )
         }
     }
