@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/v1/member")
+@RequestMapping("/v1/members")
 class MemberController(
 
     private val memberService: MemberService,
@@ -44,7 +44,7 @@ class MemberController(
         return memberService.getMember(targetMemberId)
     }
 
-    @PatchMapping("/{targetMemberId}")
+    @PatchMapping("")
     fun updateMember(
         @RequestBody updateDto: MemberUpdateDto,
     ): MemberInfoDto {
