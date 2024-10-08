@@ -1,37 +1,36 @@
 package com.example.kotlinPractice.domain.entity
 
 import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientCreateDto
-import jakarta.persistence.*
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
 import java.time.LocalDate
 
 @Entity
 class Ingredient(
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long?,
 
-        @Column(nullable = false)
-        val name: String,
+    @Column(nullable = false)
+    val name: String,
 
-        @Column(nullable = false)
-        val buyDate: LocalDate,
+    @Column(nullable = false)
+    val buyDate: LocalDate,
 
-        @Column(nullable = false)
-        val expireDate: LocalDate,
+    @Column(nullable = false)
+    val expireDate: LocalDate,
 
-        //TODO 항상최신화
-        @Column(nullable = false)
-        var expirationPeriod: Int,
+    @Column(nullable = false)
+    var expirationPeriod: Int,
 
-        @Column(nullable = false)
-        var quantity: Int,
+    @Column(nullable = false)
+    var quantity: Int,
 
-        @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "refrigerator_id")
-        var refrigerator: Refrigerator,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "refrigerator_id")
+    var refrigerator: Refrigerator,
 
-
-        ) {
+) : BaseEntity() {
 
     fun updateIngredientQuantity(useQuantity: Int) {
         this.quantity -= useQuantity
@@ -45,17 +44,15 @@ class Ingredient(
         this.expirationPeriod = toDays.toInt()
     }
 
-
     companion object {
         fun of(ingredientCreateDto: IngredientCreateDto, refrigerator: Refrigerator): Ingredient {
             return Ingredient(
-                    id = null,
-                    name = ingredientCreateDto.name,
-                    buyDate = ingredientCreateDto.buyDate,
-                    expireDate = ingredientCreateDto.expireDate,
-                    expirationPeriod = ingredientCreateDto.expirationPeriod,
-                    quantity = ingredientCreateDto.quantity,
-                    refrigerator = refrigerator
+                name = ingredientCreateDto.name,
+                buyDate = ingredientCreateDto.buyDate,
+                expireDate = ingredientCreateDto.expireDate,
+                expirationPeriod = ingredientCreateDto.expirationPeriod,
+                quantity = ingredientCreateDto.quantity,
+                refrigerator = refrigerator
             )
         }
     }

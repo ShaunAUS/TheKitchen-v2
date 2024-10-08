@@ -11,7 +11,6 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import java.lang.reflect.Method
-import java.util.*
 
 @Aspect
 @Slf4j
@@ -20,23 +19,21 @@ class AopLog {
 
     val logger: Logger = LoggerFactory.getLogger(AopLog::class.java)
 
-    //service.. 서브패키지의 클래스까지 포함
-    //service.  서브패키지 미포함
+    // service.. 서브패키지의 클래스까지 포함
+    // service.  서브패키지 미포함
     @Pointcut("execution(* com.example.kotlinPractice.service..*.*(..))")
     private fun cut() {
     }
-
 
     @Before("cut()")
     @Throws(Throwable::class)
     fun beforeParameterLog(joinPoint: JoinPoint) {
 
-        //메서드 이름
+        // 메서드 이름
         val method = getMethod(joinPoint)
         logger.info("==== method = {} ====", method.name)
 
-
-        //파라미터
+        // 파라미터
         val args = joinPoint.args
         if (args.isEmpty()) {
             logger.info("method has no parameter")
@@ -57,7 +54,6 @@ class AopLog {
 
         logger.info("return type = {}", returnObj?.javaClass?.simpleName)
         logger.info("return value = {}", returnObj)
-
     }
 
     // JoinPoint로 메서드 정보 가져오기

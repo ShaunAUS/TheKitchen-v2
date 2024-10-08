@@ -6,5 +6,5 @@ import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorInfoD
 
 interface IngredientService {
     fun useIngredient(useIngredientDto: UseIngredientDto): RefrigeratorInfoDto
-    fun addIngredient(addIngredientDto: AddIngredientDto) : RefrigeratorInfoDto
+    fun addIngredient(addIngredientDto: AddIngredientDto): RefrigeratorInfoDto
 }

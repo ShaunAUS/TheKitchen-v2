@@ -6,6 +6,4 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface IngredientRepository : JpaRepository<Ingredient, Long> {
     fun findByNameAndRefrigeratorId(name: String, refrigeratorId: Long): Ingredient?
     fun findByName(name: String): Ingredient?
-
-
 }

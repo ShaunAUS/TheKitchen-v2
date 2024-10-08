@@ -1,30 +1,25 @@
 package com.example.kotlinPractice.domain.entity
 
 import com.example.kotlinPractice.feature.kitchen.api.dto.KitchenCreateDto
-import jakarta.persistence.*
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
 
 @Entity
 class Kitchen(
 
-        @Column(nullable = false)
-        val name: String,
+    @Column(nullable = true)
+    val name: String,
 
-        @Column(nullable = false)
-        val location: String,
+    @Column(nullable = false)
+    val location: String,
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long?,
-) {
+) : BaseEntity() {
     companion object {
         fun of(createKitchenDto: KitchenCreateDto): Kitchen {
             return Kitchen(
-                    name = createKitchenDto.name,
-                    location = createKitchenDto.location,
-                    id = null
+                name = createKitchenDto.name,
+                location = createKitchenDto.location,
             )
         }
-
     }
-
 }

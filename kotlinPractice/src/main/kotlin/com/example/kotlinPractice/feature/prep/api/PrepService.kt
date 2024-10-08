@@ -8,5 +8,4 @@ interface PrepService {
     fun createPrepToTargetMember(targetMemberId: Long, prepCreateDtos: List<PrepCreateDto>): MemberWithPrepInfoDto
     fun updatePrepStatus(prepId: Long): PrepInfoDto
     fun getMyPrep(targetMemberId: Long): List<PrepInfoDto>
-
 }
