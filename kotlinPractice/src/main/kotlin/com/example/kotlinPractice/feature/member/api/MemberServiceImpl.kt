@@ -24,17 +24,19 @@ class MemberServiceImpl(
         private val prepRepository: PrepRepository,
         private val kitchenRepository: KitchenRepository,
 
-        ) : MemberService {
-    override fun createMember(memberCreateDto: MemberCreateDto, kitchenId: Long): MemberInfoDto {
-        val member = Member.of(memberCreateDto, getKitchenById(kitchenId))
+) : MemberService {
+    @Transactional
+    override fun createMember(memberCreateDto: MemberCreateDto): MemberInfoDto {
+        val member = Member.of(memberCreateDto)
         return MemberInfoDto.of(memberRepository.save(member))
     }
 
-
-    override fun getMember(memberId: Long): MemberInfoDto {
-        return MemberInfoDto.of(getMemberOrThrow(memberId))
+    @Transactional(readOnly = true)
+    override fun getMember(targetMemberId: Long): MemberInfoDto {
+        return MemberInfoDto.of(getMemberOrThrow(targetMemberId))
     }
 
+    @Transactional(readOnly = true)
     override fun getMembers(pageable: Pageable): Page<MemberInfoDto> {
         return memberRepository.findAll(pageable)
                 .map { member -> MemberInfoDto.of(member) }
@@ -48,6 +50,7 @@ class MemberServiceImpl(
         return MemberInfoDto.of(targetMember)
     }
 
+    @Transactional
     override fun removeMember(targetMemberId: Long) {
         memberRepository.deleteById(targetMemberId)
     }
