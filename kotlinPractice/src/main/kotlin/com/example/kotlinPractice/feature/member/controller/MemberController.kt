@@ -51,7 +51,7 @@ class MemberController(
         return memberService.updateMember(updateDto)
     }
 
-    @DeleteMapping("/{targetMemberId}")
+    @PatchMapping("/{targetMemberId}")
     fun removeMember(
         @PathVariable targetMemberId: Long,
     ) {
