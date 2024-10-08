@@ -11,6 +11,18 @@ out/
 gradle-app.setting
 .gradletasknamecache
 
+# Gradle specific
+**/.gradle/
+**/gradle/
+gradle/
+.gradle/
+build/
+**/buildOutputCleanup/
+**/buildOutputCleanup.lock
+**/*.bin
+**/*.lock
+**/file-system.probe
+
 # Generated files
 bin/
 gen/
