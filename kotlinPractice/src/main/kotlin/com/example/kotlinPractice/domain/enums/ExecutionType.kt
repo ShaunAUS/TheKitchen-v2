@@ -5,7 +5,7 @@ enum class ExecutionType(
     val number: Int,
 ) {
     BEFORE("시작전", 0),
-    ING("작업중",1),
+    ING("작업중", 1),
     DONE("마무리", 2);
 
     companion object {
