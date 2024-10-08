@@ -30,8 +30,8 @@ class Prep(
 
 ) : BaseEntity() {
 
-    fun updatePrepStatus() {
-        this.executionStatus = ExecutionType.DONE.number
+    fun updatePrepStatus(executionType: ExecutionType) {
+        this.executionStatus = ExecutionType.typeToInt(executionType)
     }
 
     companion object {

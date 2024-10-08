@@ -7,6 +7,7 @@ import com.example.kotlinPractice.domain.repository.PrepRepository
 import com.example.kotlinPractice.feature.member.api.dto.MemberWithPrepInfoDto
 import com.example.kotlinPractice.feature.prep.api.dto.PrepCreateDto
 import com.example.kotlinPractice.feature.prep.api.dto.PrepInfoDto
+import com.example.kotlinPractice.feature.prep.api.dto.PrepUpdateDto
 import com.group.libraryapp.utils.findByIdOrThrow
 import lombok.extern.slf4j.Slf4j
 import org.springframework.stereotype.Service
@@ -20,23 +21,38 @@ class PrepServiceImpl(
 ) : PrepService {
 
     // 다른 맴버에게 주는 형식
-    override fun createPrepToTargetMember(targetMemberId: Long, prepCreateDtos: List<PrepCreateDto>): MemberWithPrepInfoDto {
+    // 프렙리스트를 줄때는 한사람에게만 주어진다
+    @Transactional
+    override fun createPrepToTargetMember(prepCreateDtos: List<PrepCreateDto>): MemberWithPrepInfoDto {
 
+        isEmptyList(prepCreateDtos)
         val prepList = mutableListOf<Prep>()
-        val targetMember = getMemberOrThrow(targetMemberId)
-
+        val targetMember = findMemberByUniqueIdOrThrow(extractTargetMemberUniqueId(prepCreateDtos))
         for (prepCreateDto in prepCreateDtos) {
-            prepList.add(Prep.of(prepCreateDto, targetMember))
+            prepList.add(makePrepToTargetMember(prepCreateDto, targetMember))
         }
         prepRepository.saveAll(prepList)
 
         return MemberWithPrepInfoDto.of(targetMember)
     }
 
+    private fun extractTargetMemberUniqueId(prepCreateDtos: List<PrepCreateDto>) =
+        prepCreateDtos.first().targetMemberUniqueId
+
+    private fun isEmptyList(prepCreateDtos: List<PrepCreateDto>) {
+        if (prepCreateDtos.isEmpty()) {
+            throw IllegalArgumentException("PrepCreateDtos list cannot be empty")
+        }
+    }
+
+    private fun makePrepToTargetMember(prepCreateDto: PrepCreateDto, targetMember: Member): Prep {
+        return Prep.of(prepCreateDto, targetMember)
+    }
+
     @Transactional
-    override fun updatePrepStatus(prepId: Long): PrepInfoDto {
-        val prepById = prepRepository.findByIdOrThrow(prepId)
-        prepById.updatePrepStatus()
+    override fun updatePrepStatus(prepUpdateDto: PrepUpdateDto): PrepInfoDto {
+        val prepById = prepRepository.findByIdOrThrow(prepUpdateDto.prepId)
+        prepById.updatePrepStatus(prepUpdateDto.executionType)
 
         return PrepInfoDto.of(prepById)
     }
@@ -48,7 +64,8 @@ class PrepServiceImpl(
             .toList()
     }
 
-    private fun getMemberOrThrow(memberId: Long): Member {
-        return memberRepository.findByIdOrThrow(memberId)
+    private fun findMemberByUniqueIdOrThrow(memberUniqueId: String): Member {
+        return memberRepository.findBy(memberUniqueId) ?: throw NoSuchElementException("예외처리")
     }
+
 }

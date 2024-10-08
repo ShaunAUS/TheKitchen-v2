@@ -4,6 +4,7 @@ import com.example.kotlinPractice.feature.member.api.dto.MemberWithPrepInfoDto
 import com.example.kotlinPractice.feature.prep.api.PrepService
 import com.example.kotlinPractice.feature.prep.api.dto.PrepCreateDto
 import com.example.kotlinPractice.feature.prep.api.dto.PrepInfoDto
+import com.example.kotlinPractice.feature.prep.api.dto.PrepUpdateDto
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -22,17 +23,16 @@ class PrepController(
     // 다른 멤버에게  프렙리스트를 주는 형식
     @PostMapping("")
     fun makePrep(
-        @RequestParam targetMemberId: Long,
         @RequestBody prepCreateDtos: List<PrepCreateDto>
     ): MemberWithPrepInfoDto {
-        return prepService.createPrepToTargetMember(targetMemberId, prepCreateDtos)
+        return prepService.createPrepToTargetMember(prepCreateDtos)
     }
 
-    @PatchMapping("/{prepId}")
+    @PatchMapping("")
     fun finishPrep(
-        @PathVariable prepId: Long
+        @RequestBody prepUpdateDto: PrepUpdateDto
     ): PrepInfoDto {
-        return prepService.updatePrepStatus(prepId)
+        return prepService.updatePrepStatus(prepUpdateDto)
     }
 
     @GetMapping("/my")
