@@ -15,9 +15,8 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Slf4j
 class PrepServiceImpl(
-        private val prepRepository: PrepRepository,
-        private val memberRepository: MemberRepository,
-        private val prepCustomRepository: PrepCustomRepository
+    private val prepRepository: PrepRepository,
+    private val memberRepository: MemberRepository,
 ) : PrepService {
 
     // 다른 맴버에게 주는 형식
@@ -42,12 +41,11 @@ class PrepServiceImpl(
         return PrepInfoDto.of(prepById)
     }
 
-    //TODO CustomRepository에서 가공해서 가져오는 방식
-    override fun getMyPrep(targetMemberId:  Long): List<PrepInfoDto> {
-         return prepCustomRepository.findByMemberId(targetMemberId)
-                 .map { p -> PrepInfoDto.of(p)}
-                 .toList();
-
+    // TODO CustomRepository에서 가공해서 가져오는 방식
+    override fun getMyPrep(targetMemberId: Long): List<PrepInfoDto> {
+        return prepRepository.findByMemberId(targetMemberId)
+            .map { p -> PrepInfoDto.of(p) }
+            .toList()
     }
 
     private fun getMemberOrThrow(memberId: Long): Member {
