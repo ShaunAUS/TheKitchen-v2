@@ -5,6 +5,8 @@ import com.example.kotlinPractice.domain.entity.QMember.member
 import com.example.kotlinPractice.domain.entity.QPrep.prep
 import com.example.kotlinPractice.domain.repository.querydsl.MemberRepositoryCustom
 import com.example.kotlinPractice.feature.member.api.dto.MemberPrepInfoDto
+import com.example.kotlinPractice.global.error.ErrorCode
+import com.example.kotlinPractice.global.error.exception.BusinessException
 import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -49,7 +51,7 @@ class MemberRepositoryCustomImpl(
                 member.uniqueId.eq(targetMemberUniqueId.toString())
                     .and(member.deleteFlag.eq('N')),
             )
-            .fetchOne() ?: throw NoSuchElementException("에외처리")
+            .fetchOne() ?: throw BusinessException(ErrorCode.NOT_FOUND_MEMBER)
 
         return MemberPrepInfoDto.of(memberWithPreps)
     }
