@@ -17,8 +17,8 @@ class Menu(
     @Column(nullable = false)
     val alergicType: Int,
 
-        @ManyToOne
-        @JoinColumn(name = "kitchen_id")
-        val kitchen: Kitchen
-) {
-}
+    @ManyToOne
+    @JoinColumn(name = "kitchen_id")
+    val kitchen: Kitchen,
+
+) : BaseEntity()

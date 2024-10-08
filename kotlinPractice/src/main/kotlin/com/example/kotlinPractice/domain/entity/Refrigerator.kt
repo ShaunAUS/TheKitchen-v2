@@ -8,9 +8,6 @@ import jakarta.persistence.OneToMany
 
 @Entity
 class Refrigerator(
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long?,
 
     val name: String,
 
@@ -21,18 +18,15 @@ class Refrigerator(
     @OneToMany(mappedBy = "refrigerator", orphanRemoval = true)
     val ingredients: List<Ingredient>,
 
-        ) {
+) : BaseEntity() {
 
     companion object {
         fun of(refrigeratorCreateDto: RefrigeratorCreateDto, kitchen: Kitchen): Refrigerator {
-             return Refrigerator(
-                    id = null,
-                    name = refrigeratorCreateDto.name,
-                    kitchen = kitchen,
-                    ingredients = emptyList()
-             )
+            return Refrigerator(
+                name = refrigeratorCreateDto.name,
+                kitchen = kitchen,
+                ingredients = emptyList()
+            )
         }
     }
-
-
 }

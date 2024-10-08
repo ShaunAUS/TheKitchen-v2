@@ -30,10 +30,7 @@ class Member(
         @OneToMany(mappedBy = "member", orphanRemoval = true)
         val preps: List<Prep>,
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long?,
-) {
+) : BaseEntity() {
 
     fun update(updateDto: MemberUpdateDto) {
         this.name = updateDto.name

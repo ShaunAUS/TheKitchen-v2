@@ -28,12 +28,7 @@ class Prep(
     @JoinColumn(name = "member_id")
     var member: Member,
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long?,
-
-
-        ) {
+) : BaseEntity() {
 
     fun updatePrepStatus() {
         this.executionStatus = ExecutionType.DONE.number
@@ -42,12 +37,11 @@ class Prep(
     companion object {
         fun of(prepCreateDto: PrepCreateDto, targetMember: Member): Prep {
             return Prep(
-                    id = null,
-                    job = prepCreateDto.job,
-                    deadLine = prepCreateDto.deadLine,
-                    executionStatus = ExecutionType.typeToInt(prepCreateDto.executionType),
-                    priority = prepCreateDto.priority,
-                    member = targetMember
+                job = prepCreateDto.job,
+                deadLine = prepCreateDto.deadLine,
+                executionStatus = ExecutionType.typeToInt(prepCreateDto.executionType),
+                priority = prepCreateDto.priority,
+                member = targetMember
             )
         }
     }
