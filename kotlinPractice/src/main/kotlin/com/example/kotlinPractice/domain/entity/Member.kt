@@ -27,8 +27,12 @@ class Member(
     @Column(nullable = false, unique = true, updatable = false, length = 36)
     var uniqueId: String = UUID.randomUUID().toString(),
 
-        @OneToMany(mappedBy = "member", orphanRemoval = true)
-        val preps: List<Prep>,
+    @Column(nullable = false)
+    var kitchenId: Long,
+
+    // TODO need??
+    @OneToMany(mappedBy = "member", orphanRemoval = true)
+    val preps: List<Prep> = emptyList(),
 
 ) : BaseEntity() {
 
@@ -39,24 +43,19 @@ class Member(
         this.experience = updateDto.experience
     }
 
-    fun setupKitchen(kitchen: Kitchen) {
-        this.kitchen = kitchen
+    fun delete() {
+        this.deleteFlag = 'Y'
     }
 
     companion object {
-        fun of(memberCreateDto: MemberCreateDto, kitchen: Kitchen): Member {
+        fun of(memberCreateDto: MemberCreateDto): Member {
             return Member(
-                    name = memberCreateDto.name,
-                    level = LevelType.typeToInt(memberCreateDto.level),
-                    section = SectionType.typeToInt(memberCreateDto.section),
-                    experience = memberCreateDto.experience,
-                    kitchen = kitchen,
-                    preps = emptyList(),//TODO  ModelMapper Converter는 빈값 안넣어줘도 됐는데.. 이방법은 어떻게 해결할까
-                    id = null,      //TODO 이렇게 null 세팅해줘야하는가..?
-                    )
+                name = memberCreateDto.name,
+                level = LevelType.typeToInt(memberCreateDto.level),
+                section = SectionType.typeToInt(memberCreateDto.section),
+                experience = memberCreateDto.experience,
+                kitchenId = memberCreateDto.kitchenId,
+            )
         }
     }
-
-
 }
-
