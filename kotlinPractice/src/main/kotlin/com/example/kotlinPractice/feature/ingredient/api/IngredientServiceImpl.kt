@@ -6,16 +6,14 @@ import com.example.kotlinPractice.domain.entity.Refrigerator
 import com.example.kotlinPractice.domain.repository.IngredientRepository
 import com.example.kotlinPractice.domain.repository.KitchenRepository
 import com.example.kotlinPractice.domain.repository.RefrigeratorRepository
-import com.example.kotlinPractice.feature.ingredient.api.dto.AddIngredientDto
-import com.example.kotlinPractice.feature.ingredient.api.dto.UseIngredientDto
-import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorInfoDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.CreateIngredientDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientUpdateDto
+import com.example.kotlinPractice.feature.refrigerator.api.dto.IngredientInfoDto
 import com.group.libraryapp.utils.empty
 import com.group.libraryapp.utils.findByIdOrThrow
-import com.group.libraryapp.utils.notEnough
 import lombok.extern.slf4j.Slf4j
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import java.time.Duration
 
 @Service
 @Slf4j
@@ -28,44 +26,33 @@ class IngredientServiceImpl(
 ) : IngredientService {
 
     @Transactional
-    override fun useIngredient(useIngredientDto: UseIngredientDto): RefrigeratorInfoDto {
-
-        val refrigeratorId = useIngredientDto.refrigeratorId
+    override fun updateIngredientQuantity(ingredientUpdateDto: IngredientUpdateDto): IngredientInfoDto {
+        val refrigeratorId = ingredientUpdateDto.refrigeratorId
         val refrigerator = findRefrigeratorOrThrow(refrigeratorId)
 
-        for (useIngredient in useIngredientDto.ingredientUseDtos) {
-            val ingredient = ingredientRepository.findByNameAndRefrigeratorId(useIngredient.name, refrigeratorId)
-                ?: empty()
-            ingredient.updateIngredientQuantity(useIngredient.quantity)
-
-            noticeIfNotEnoughtQuantity(ingredient.quantity)
+        for (newIngredient in ingredientUpdateDto.ingredientUpdateDtos) {
+            val oldIngredient = ingredientRepository.findByNameWithRefrigeratorId(newIngredient.name, refrigeratorId) ?: empty()
+            oldIngredient.updateIngredientQuantity(newIngredient.quantity)
         }
-
-        upToDateIngredientDate(refrigerator)
-
-        return RefrigeratorInfoDto.of(refrigerator)
-    }
-
-    private fun noticeIfNotEnoughtQuantity(quantity: Int) {
-        if (quantity < 2) {
-            notEnough()
-        }
+        return IngredientInfoDto.of(refrigerator)
     }
 
     @Transactional
-    override fun addIngredient(addIngredientDto: AddIngredientDto): RefrigeratorInfoDto {
+    override fun addIngredient(createIngredientDto: CreateIngredientDto): IngredientInfoDto {
         // 주방 ,냉장고 있나 확인
-        findKitchenOrThrow(addIngredientDto.kitchenId)
-        val refrigerator = findRefrigeratorOrThrow(addIngredientDto.refrigeratorId)
+        findKitchenOrThrow(createIngredientDto.kitchenId)
+        val refrigerator = findRefrigeratorOrThrow(createIngredientDto.refrigeratorId)
+        addIngredientToRefrigerator(createIngredientDto, refrigerator)
+        return IngredientInfoDto.of(refrigerator)
+    }
 
-        // TODO 중간에 들어온 재료 날짜다르게 로직 필요 , 지금은 그냥 더하기
-        addIngredientDto.ingredientCreateDtos
+    // TODO 중간에 들어온 재료 날짜다르게 로직 필요 , 지금은 그냥 더하기
+    private fun addIngredientToRefrigerator(createIngredientDto: CreateIngredientDto, refrigerator: Refrigerator) {
+        createIngredientDto.ingredientCreateDtos
             .forEach { ingredientDto ->
                 ingredientRepository.findByName(ingredientDto.name)?.addIngredientQuantity(ingredientDto.quantity)
                     ?: ingredientRepository.save(Ingredient.of(ingredientDto, refrigerator))
             }
-
-        return RefrigeratorInfoDto.of(refrigerator)
     }
 
     private fun findKitchenOrThrow(kitchenId: Long): Kitchen {
@@ -74,16 +61,5 @@ class IngredientServiceImpl(
 
     private fun findRefrigeratorOrThrow(refrigeratorId: Long): Refrigerator {
         return refrigeratorRepository.findByIdOrThrow(refrigeratorId)
-    }
-
-    @Transactional
-    private fun upToDateIngredientDate(refrigerator: Refrigerator) {
-        refrigerator.ingredients
-            .stream()
-            .forEach { ingredient ->
-                ingredient.updateExpirationPeriod(
-                    Duration.between(ingredient.buyDate.atStartOfDay(), ingredient.expireDate.atStartOfDay()).toDays(),
-                )
-            }
     }
 }
