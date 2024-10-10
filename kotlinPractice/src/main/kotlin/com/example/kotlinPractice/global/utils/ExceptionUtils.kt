@@ -9,6 +9,7 @@ fun fail(): Nothing {
     throw IllegalArgumentException()
 }
 
+// TODO 여기서 에러 처리하는게 좋을까 기존처럼 exception으로 처리하는게 좋을까..?
 fun empty(): Nothing {
     throw NoSuchElementException("No value present")
 }

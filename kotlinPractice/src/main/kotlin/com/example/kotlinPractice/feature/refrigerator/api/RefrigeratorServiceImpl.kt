@@ -4,8 +4,8 @@ import com.example.kotlinPractice.domain.entity.Kitchen
 import com.example.kotlinPractice.domain.entity.Refrigerator
 import com.example.kotlinPractice.domain.repository.KitchenRepository
 import com.example.kotlinPractice.domain.repository.RefrigeratorRepository
+import com.example.kotlinPractice.feature.refrigerator.api.dto.IngredientInfoDto
 import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorCreateDto
-import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorInfoDto
 import com.group.libraryapp.utils.findByIdOrThrow
 import lombok.extern.slf4j.Slf4j
 import org.springframework.stereotype.Service
@@ -19,23 +19,23 @@ class RefrigeratorServiceImpl(
     private val kitchenRepository: KitchenRepository,
 ) : RefrigeratorService {
 
-    override fun getRefrigerator(refrigeratorId: Long): RefrigeratorInfoDto {
-        return RefrigeratorInfoDto.of(findRefrigeratorOrThrow(refrigeratorId))
+    override fun getRefrigerator(refrigeratorId: Long): IngredientInfoDto {
+        return IngredientInfoDto.of(findRefrigeratorOrThrow(refrigeratorId))
     }
 
     override fun remove(refrigeratorId: Long) {
         refrigeratorRepository.deleteById(refrigeratorId)
     }
 
-    override fun createRefrigerator(refrigeratorCreateDto: RefrigeratorCreateDto, kitchenId: Long): RefrigeratorInfoDto {
+    override fun createRefrigerator(refrigeratorCreateDto: RefrigeratorCreateDto, kitchenId: Long): IngredientInfoDto {
         val refrigerator = Refrigerator.of(refrigeratorCreateDto, findKitchenOrThrow(kitchenId))
-        return RefrigeratorInfoDto.of(refrigeratorRepository.save(refrigerator))
+        return IngredientInfoDto.of(refrigeratorRepository.save(refrigerator))
     }
 
-    override fun updateRefrigerator(refrigeratorId: Long): RefrigeratorInfoDto {
+    override fun updateRefrigerator(refrigeratorId: Long): IngredientInfoDto {
         val refrigerator = findRefrigeratorOrThrow(refrigeratorId)
         upToDateIngredientDate(refrigerator)
-        return RefrigeratorInfoDto.of(refrigerator)
+        return IngredientInfoDto.of(refrigerator)
     }
 
     private fun findKitchenOrThrow(kitchenId: Long): Kitchen {

@@ -1,10 +1,10 @@
 package com.example.kotlinPractice.feature.ingredient.api
 
-import com.example.kotlinPractice.feature.ingredient.api.dto.AddIngredientDto
-import com.example.kotlinPractice.feature.ingredient.api.dto.UseIngredientDto
-import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorInfoDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.CreateIngredientDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientUpdateDto
+import com.example.kotlinPractice.feature.refrigerator.api.dto.IngredientInfoDto
 
 interface IngredientService {
-    fun useIngredient(useIngredientDto: UseIngredientDto): RefrigeratorInfoDto
-    fun addIngredient(addIngredientDto: AddIngredientDto): RefrigeratorInfoDto
+    fun updateIngredientQuantity(ingredientUpdateDto: IngredientUpdateDto): IngredientInfoDto
+    fun addIngredient(createIngredientDto: CreateIngredientDto): IngredientInfoDto
 }

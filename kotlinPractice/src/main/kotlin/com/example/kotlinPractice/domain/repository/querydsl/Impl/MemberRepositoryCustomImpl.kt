@@ -43,7 +43,7 @@ class MemberRepositoryCustomImpl(
             .fetchOne()
     }
 
-    override fun findMemberWithPreps(targetMemberUniqueId: Long): MemberPrepInfoDto {
+    override fun findMemberWithPrepsBy(targetMemberUniqueId: Long): MemberPrepInfoDto {
         val memberWithPreps = queryFactory
             .selectFrom(member)
             .leftJoin(member.preps, prep).fetchJoin()

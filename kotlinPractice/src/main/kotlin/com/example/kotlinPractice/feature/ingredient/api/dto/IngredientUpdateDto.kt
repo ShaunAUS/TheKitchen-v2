@@ -1,8 +1,7 @@
 package com.example.kotlinPractice.feature.ingredient.api.dto
 
-data class AddIngredientDto(
-
+data class IngredientUpdateDto(
     val kitchenId: Long,
     val refrigeratorId: Long,
-    val ingredientCreateDtos: List<IngredientCreateDto>
+    val ingredientUpdateDtos: List<IngredientDto>
 )

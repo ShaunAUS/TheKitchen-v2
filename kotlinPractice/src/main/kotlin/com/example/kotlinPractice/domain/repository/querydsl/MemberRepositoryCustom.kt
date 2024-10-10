@@ -8,5 +8,5 @@ import org.springframework.data.domain.Pageable
 interface MemberRepositoryCustom {
     fun findMembers(page: Pageable): Page<Member>
     fun findBy(memberUniqueId: String): Member?
-    fun findMemberWithPreps(targetMemberUniqueId: Long) : MemberPrepInfoDto
+    fun findMemberWithPrepsBy(targetMemberUniqueId: Long): MemberPrepInfoDto
 }

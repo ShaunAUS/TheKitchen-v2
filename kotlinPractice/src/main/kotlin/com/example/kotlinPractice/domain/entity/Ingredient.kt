@@ -33,7 +33,7 @@ class Ingredient(
 ) : BaseEntity() {
 
     fun updateIngredientQuantity(useQuantity: Int) {
-        this.quantity -= useQuantity
+        this.quantity = quantity
     }
 
     fun addIngredientQuantity(quantity: Int) {
