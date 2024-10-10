@@ -1,9 +1,7 @@
 package com.example.kotlinPractice.domain.repository
 
 import com.example.kotlinPractice.domain.entity.Ingredient
+import com.example.kotlinPractice.domain.repository.querydsl.IngredientRepositoryCustom
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface IngredientRepository : JpaRepository<Ingredient, Long> {
-    fun findByNameAndRefrigeratorId(name: String, refrigeratorId: Long): Ingredient?
-    fun findByName(name: String): Ingredient?
-}
+interface IngredientRepository : JpaRepository<Ingredient, Long>, IngredientRepositoryCustom
