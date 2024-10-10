@@ -1,9 +1,9 @@
 package com.example.kotlinPractice.feature.ingredient.controller
 
 import com.example.kotlinPractice.feature.ingredient.api.IngredientService
-import com.example.kotlinPractice.feature.ingredient.api.dto.AddIngredientDto
-import com.example.kotlinPractice.feature.ingredient.api.dto.UseIngredientDto
-import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorInfoDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.CreateIngredientDto
+import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientUpdateDto
+import com.example.kotlinPractice.feature.refrigerator.api.dto.IngredientInfoDto
 import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -18,17 +18,16 @@ class IngredientController(
 ) {
 
     @PostMapping("")
-    fun buyIngredient(
-        @RequestBody addIngredientDto: AddIngredientDto,
-    ): RefrigeratorInfoDto {
-
-        return ingredientService.addIngredient(addIngredientDto)
+    fun addIngredientToRefrigerator(
+        @RequestBody createIngredientDto: CreateIngredientDto,
+    ): IngredientInfoDto {
+        return ingredientService.addIngredient(createIngredientDto)
     }
 
     @PatchMapping("")
-    fun useIngredient(
-        @RequestBody useIngredientDto: UseIngredientDto,
-    ): RefrigeratorInfoDto {
-        return ingredientService.useIngredient(useIngredientDto)
+    fun updateIngredient(
+        @RequestBody ingredientUpdateDto: IngredientUpdateDto,
+    ): IngredientInfoDto {
+        return ingredientService.updateIngredientQuantity(ingredientUpdateDto)
     }
 }
