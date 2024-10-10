@@ -1,7 +1,6 @@
 package com.example.kotlinPractice.feature.member.api.dto
 
 import com.example.kotlinPractice.domain.entity.Member
-import com.example.kotlinPractice.domain.entity.Prep
 import com.example.kotlinPractice.feature.prep.api.dto.PrepInfoDto
 
 data class MemberPrepInfoDto(
