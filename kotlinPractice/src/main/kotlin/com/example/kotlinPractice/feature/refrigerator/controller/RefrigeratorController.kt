@@ -35,6 +35,7 @@ class RefrigeratorController(
         return refrigeratorService.getRefrigerator(refrigeratorId)
     }
 
+    //TODO  이것도 Patch??
     @DeleteMapping("/{refrigeratorId}")
     fun removeRefrigerator(
         @PathVariable refrigeratorId: Long,
