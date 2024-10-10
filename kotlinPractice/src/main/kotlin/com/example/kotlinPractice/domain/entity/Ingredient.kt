@@ -1,5 +1,6 @@
 package com.example.kotlinPractice.domain.entity
 
+import com.example.kotlinPractice.domain.enums.EnoughType
 import com.example.kotlinPractice.feature.ingredient.api.dto.IngredientCreateDto
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
@@ -42,6 +43,14 @@ class Ingredient(
 
     fun updateExpirationPeriod(toDays: Long) {
         this.expirationPeriod = toDays.toInt()
+    }
+
+    fun isEnoughQuantity(): EnoughType {
+        if (this.quantity < 2) {
+            return EnoughType.NOTENOUGH
+        }
+        return EnoughType.ENOUGH
+
     }
 
     companion object {
