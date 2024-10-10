@@ -39,11 +39,6 @@ class RefrigeratorServiceImpl(
             .toList()
     }
 
-    override fun updateRefrigerator(refrigeratorId: Long): IngredientInfoDto {
-        val refrigerator = findRefrigeratorOrThrow(refrigeratorId)
-        upToDateIngredientDate(refrigerator)
-        return IngredientInfoDto.of(refrigerator)
-    }
 
     private fun findKitchenOrThrow(kitchenId: Long): Kitchen {
         return kitchenRepository.findByIdOrThrow(kitchenId)

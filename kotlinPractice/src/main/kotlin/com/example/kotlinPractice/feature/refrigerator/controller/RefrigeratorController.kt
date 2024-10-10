@@ -27,12 +27,6 @@ class RefrigeratorController(
         return refrigeratorService.createRefrigerator(refrigeratorCreateDto)
     }
 
-    @PatchMapping("/uptodate")
-    fun updateRefrigerator(
-        @RequestParam("refrigeratorId") refrigeratorId: Long,
-    ): IngredientInfoDto {
-        return refrigeratorService.updateRefrigerator(refrigeratorId)
-    }
 
     @GetMapping("/{refrigeratorId}")
     fun getRefrigeratorStatus(
