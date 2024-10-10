@@ -1,8 +1,10 @@
 package com.example.kotlinPractice.feature.refrigerator.controller
 
 import com.example.kotlinPractice.feature.refrigerator.api.RefrigeratorService
+import com.example.kotlinPractice.feature.refrigerator.api.dto.IngredientEnoughQuantityDto
 import com.example.kotlinPractice.feature.refrigerator.api.dto.IngredientInfoDto
 import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorCreateDto
+import com.example.kotlinPractice.feature.refrigerator.api.dto.RefrigeratorInfoDto
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
@@ -21,9 +23,8 @@ class RefrigeratorController(
     @PostMapping("")
     fun createRefrigerator(
         @RequestBody refrigeratorCreateDto: RefrigeratorCreateDto,
-        @RequestParam("kitchenId") kitchenId: Long,
-    ): IngredientInfoDto {
-        return refrigeratorService.createRefrigerator(refrigeratorCreateDto, kitchenId)
+    ): RefrigeratorInfoDto {
+        return refrigeratorService.createRefrigerator(refrigeratorCreateDto)
     }
 
     @PatchMapping("/uptodate")
@@ -36,7 +37,7 @@ class RefrigeratorController(
     @GetMapping("/{refrigeratorId}")
     fun getRefrigeratorStatus(
         @PathVariable refrigeratorId: Long,
-    ): IngredientInfoDto {
+    ): RefrigeratorInfoDto {
         return refrigeratorService.getRefrigerator(refrigeratorId)
     }
 

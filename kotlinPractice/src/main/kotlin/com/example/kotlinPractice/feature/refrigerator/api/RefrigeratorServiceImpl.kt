@@ -19,17 +19,24 @@ class RefrigeratorServiceImpl(
     private val kitchenRepository: KitchenRepository,
 ) : RefrigeratorService {
 
-    override fun getRefrigerator(refrigeratorId: Long): IngredientInfoDto {
-        return IngredientInfoDto.of(findRefrigeratorOrThrow(refrigeratorId))
+    override fun getRefrigerator(refrigeratorId: Long): RefrigeratorInfoDto {
+        return RefrigeratorInfoDto.of(findRefrigeratorOrThrow(refrigeratorId))
     }
 
     override fun remove(refrigeratorId: Long) {
         refrigeratorRepository.deleteById(refrigeratorId)
     }
 
-    override fun createRefrigerator(refrigeratorCreateDto: RefrigeratorCreateDto, kitchenId: Long): IngredientInfoDto {
-        val refrigerator = Refrigerator.of(refrigeratorCreateDto, findKitchenOrThrow(kitchenId))
-        return IngredientInfoDto.of(refrigeratorRepository.save(refrigerator))
+    override fun createRefrigerator(refrigeratorCreateDto: RefrigeratorCreateDto): RefrigeratorInfoDto {
+        return RefrigeratorInfoDto.of(refrigeratorRepository.save(createRefrigeratorBy(refrigeratorCreateDto)))
+    }
+
+
+    override fun checkNotEnoughIngredientFromRefrigerator(refrigeratorId: Long): List<IngredientEnoughQuantityDto> {
+        return findIngredientsFromRefrigerator(refrigeratorId)
+            .stream()
+            .map { ingredient -> IngredientEnoughQuantityDto.of(ingredient) }
+            .toList()
     }
 
     override fun updateRefrigerator(refrigeratorId: Long): IngredientInfoDto {
