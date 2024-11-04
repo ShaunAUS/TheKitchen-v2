@@ -1,0 +1,72 @@
+# Kotlin
+*.class
+*.log
+*.ctxt
+
+# Build related
+build/
+out/
+.gradle/
+**/build/
+gradle-app.setting
+.gradletasknamecache
+
+# Gradle specific
+**/.gradle/
+**/gradle/
+gradle/
+.gradle/
+build/
+**/buildOutputCleanup/
+**/buildOutputCleanup.lock
+**/*.bin
+**/*.lock
+**/file-system.probe
+
+# Generated files
+bin/
+gen/
+captures/
+
+# IntelliJ IDEA
+*.iml
+*.iws
+*.ipr
+.idea/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Kotlin/KAPT specific
+.kotlin/
+*.kotlin_module
+*.kotlin_metadata
+*.kotlin_builtins
+kapt_metadata/
+kapt_annotations/
+**/build/tmp/kapt3/
+**/build/generated/
+**/build/tmp/
+**/build/classes/
+**/build/reports/
+
+# Mac OS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs and databases
+*.log
+*.sqlite
+
+# Local configuration file
+local.properties
+
+# Application configuration
+application.yml
+
+# Environment files
+.env
+
