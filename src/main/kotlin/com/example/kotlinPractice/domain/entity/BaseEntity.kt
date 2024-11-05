@@ -23,5 +23,6 @@ open class BaseEntity {
     @Column
     var updatedAt: LocalDateTime? = null
 
+    @Column(nullable = false, length = 1)
     var deleteFlag: Char = 'N'
 }

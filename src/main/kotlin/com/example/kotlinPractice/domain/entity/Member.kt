@@ -31,7 +31,7 @@ class Member(
     var kitchenId: Long,
 
     @OneToMany(mappedBy = "member", orphanRemoval = true)
-    val preps: List<Prep> = emptyList(),
+    val preps: MutableList<Prep> = mutableListOf(),
 
 ) : BaseEntity() {
 
