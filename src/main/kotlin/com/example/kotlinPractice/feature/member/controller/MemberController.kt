@@ -59,7 +59,7 @@ class MemberController(
         return memberService.removeMember(targetMemberUniqueId)
     }
 
-    @GetMapping("/prep/{targetMemberUniqueId}")
+    @GetMapping("{targetMemberUniqueId}/prep")
     fun checkMyPrep(
         @PathVariable targetMemberUniqueId: Long,
     ): MemberPrepInfoDto {
