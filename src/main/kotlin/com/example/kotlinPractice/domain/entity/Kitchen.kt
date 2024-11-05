@@ -7,7 +7,7 @@ import jakarta.persistence.Entity
 @Entity
 class Kitchen(
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     val name: String,
 
     @Column(nullable = false)

@@ -17,7 +17,7 @@ class Menu(
     var price: Int,
 
     @Column(nullable = true)
-    var procedure: String,
+    var procedure: String?,
 
     @OneToMany(mappedBy = "menu", cascade = [CascadeType.ALL], orphanRemoval = true)
     val alergicTypes: MutableList<Alergic> = mutableListOf(),
