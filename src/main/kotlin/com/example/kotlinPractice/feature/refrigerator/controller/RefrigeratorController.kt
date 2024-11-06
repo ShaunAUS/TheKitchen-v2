@@ -38,7 +38,7 @@ class RefrigeratorController(
         refrigeratorService.remove(refrigeratorId)
     }
 
-    @GetMapping("/{refrigeratorId}")
+    @GetMapping("/{refrigeratorId}/check/ingredient")
     fun checkNotEnoughIngredientFromRefrigerator(
         @PathVariable refrigeratorId: Long,
     ): List<IngredientEnoughQuantityDto> {
