@@ -24,7 +24,12 @@ class Menu(
         protected set
 
     @Column(nullable = true)
-    var procedure: String?,
+    var cookingProcedure: String? = cookingProcedure // 필드명 변경
+        protected set
+
+    @Column(nullable = false)
+    var kitchenId: Long = kitchenId
+        protected set
 
     @OneToMany(mappedBy = "menu", cascade = [CascadeType.ALL], orphanRemoval = true)
     private val _alergicTypes: MutableList<Alergic> = mutableListOf()
@@ -45,7 +50,7 @@ class Menu(
     fun update(menuUpdateDto: MenuUpdateDto): Menu {
         this.name = menuUpdateDto.name
         this.price = menuUpdateDto.price
-        this.procedure = menuUpdateDto.procedure
+        this.cookingProcedure = menuUpdateDto.procedure
         return this
     }
 
@@ -58,7 +63,7 @@ class Menu(
             return Menu(
                 name = menuCreateClientDto.menuCreateDto.name,
                 price = menuCreateClientDto.menuCreateDto.price,
-                procedure = menuCreateClientDto.menuCreateDto.procedure,
+                cookingProcedure = menuCreateClientDto.menuCreateDto.procedure,
                 kitchenId = menuCreateClientDto.kitchenId,
             )
         }
