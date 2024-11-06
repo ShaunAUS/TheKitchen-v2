@@ -12,6 +12,13 @@ plugins {
     kotlin("plugin.jpa") version "1.7.22"
 }
 
+/* 상속이 없어 private setter을 사용하고 싶지만 JPA의 proxy 때문에 allOpen*/
+allOpen {
+    annotation("jakarta.persistence.Entity")
+    annotation("jakarta.persistence.MappedSuperclass")
+    annotation("jakarta.persistence.Embeddable")
+}
+
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
@@ -37,7 +44,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     // minio
-    implementation("io.minio:minio:8.4.2")
+    implementation("io.minio:minio:8.5.4")
 
     // .env
     implementation("me.paulschwarz:spring-dotenv:3.0.0")
