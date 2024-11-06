@@ -11,27 +11,38 @@ import java.time.LocalDate
 
 @Entity
 class Ingredient(
+    name: String,
+    buyDate: LocalDate,
+    expireDate: LocalDate,
+    expirationPeriod: Int,
+    quantity: Int,
+    refrigerator: Refrigerator,
+) : BaseEntity() {
 
     @Column(nullable = false)
-    val name: String,
+    var name: String = name
+        protected set
 
     @Column(nullable = false)
-    val buyDate: LocalDate,
+    var buyDate: LocalDate = buyDate
+        protected set
 
     @Column(nullable = false)
-    val expireDate: LocalDate,
+    var expireDate: LocalDate = expireDate
+        protected set
 
     @Column(nullable = false)
-    var expirationPeriod: Int,
+    var expirationPeriod: Int = expirationPeriod
+        protected set
 
     @Column(nullable = false)
-    var quantity: Int,
+    var quantity: Int = quantity
+        protected set
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "refrigerator_id")
-    var refrigerator: Refrigerator,
-
-) : BaseEntity() {
+    var refrigerator: Refrigerator = refrigerator
+        protected set
 
     fun updateIngredientQuantity(newIngredientQuantity: Int) {
         this.quantity = newIngredientQuantity
@@ -41,12 +52,8 @@ class Ingredient(
         this.quantity += quantity
     }
 
-    // FIXME 지금은 개수로만 체크
     fun isEnoughQuantity(): EnoughType {
-        if (this.quantity < 2) {
-            return EnoughType.NOTENOUGH
-        }
-        return EnoughType.ENOUGH
+        return if (this.quantity < 2) EnoughType.NOTENOUGH else EnoughType.ENOUGH
     }
 
     companion object {

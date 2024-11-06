@@ -11,24 +11,33 @@ import java.time.LocalDate
 
 @Entity
 class Prep(
+    job: String,
+    deadLine: LocalDate,
+    executionStatus: Int,
+    priority: Int,
+    member: Member,
+) : BaseEntity() {
 
     @Column(nullable = false)
-    val job: String,
+    var job: String = job
+        protected set
 
     @Column(nullable = false)
-    val deadLine: LocalDate,
+    var deadLine: LocalDate = deadLine
+        protected set
 
     @Column(nullable = false)
-    var executionStatus: Int,
+    var executionStatus: Int = executionStatus
+        protected set
 
     @Column(nullable = false)
-    val priority: Int,
+    var priority: Int = priority
+        protected set
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    var member: Member,
-
-) : BaseEntity() {
+    var member: Member = member
+        protected set
 
     fun updatePrepStatus(executionType: ExecutionType) {
         this.executionStatus = ExecutionType.toInt(executionType)
