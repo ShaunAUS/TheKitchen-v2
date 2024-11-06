@@ -10,10 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
 
 @MappedSuperclass
-open class BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null
+abstract class BaseEntity {
 
     @CreationTimestamp
     @Column(updatable = false)
@@ -25,4 +22,8 @@ open class BaseEntity {
 
     @Column(nullable = false, length = 1)
     var deleteFlag: Char = 'N'
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null
 }

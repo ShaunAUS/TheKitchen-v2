@@ -19,7 +19,6 @@ class MenuController(
     private val menuFacade: MenuFacade,
 
 ) {
-
     @PostMapping("")
     fun createMenu(
         @RequestBody menuCreateClientDto: MenuCreateClientDto,
@@ -28,7 +27,7 @@ class MenuController(
         return menuFacade.createMenu(menuCreateClientDto, menuImages)
     }
 
-    @PostMapping("")
+    @PatchMapping("")
     fun updateMenu(
         @RequestBody menuUpdateDto: MenuUpdateDto,
         @RequestParam("files") newMenuImages: List<MultipartFile>,

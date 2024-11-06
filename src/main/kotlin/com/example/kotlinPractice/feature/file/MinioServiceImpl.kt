@@ -23,7 +23,7 @@ class MinioServiceImpl(
     @Value("\${minio.url}")
     private val minioUrl: String,
 
-    @Value("\${minio.bucketName}")
+    @Value("\${minio.bucket-name}")
     private val bucketName: String,
 
     private val minioClient: MinioClient,

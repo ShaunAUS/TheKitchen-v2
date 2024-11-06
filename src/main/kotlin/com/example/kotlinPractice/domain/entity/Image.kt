@@ -7,13 +7,21 @@ import jakarta.persistence.ManyToOne
 
 @Entity
 class Image(
-    val imageRandomName: String, // Minio 객체키
-    val url: String, // Minio URL
+    imageRandomName: String,
+    url: String,
+    menu: Menu,
+) : BaseEntity() {
+    var imageRandomName: String = imageRandomName
+        protected set
+
+    var url: String = url
+        protected set
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menu_id")
-    val menu: Menu,
+    var menu: Menu = menu
+        protected set
 
-) : BaseEntity() {
     fun delete() {
         this.deleteFlag = 'Y'
     }

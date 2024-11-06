@@ -47,7 +47,7 @@ class MemberRepositoryCustomImpl(
     override fun findMemberWithPrepsBy(targetMemberUniqueId: Long): MemberPrepInfoDto {
         val memberWithPreps = queryFactory
             .selectFrom(member)
-            .leftJoin(member.preps, prep).fetchJoin()
+            .leftJoin(member._preps, prep).fetchJoin()
             .where(
                 member.uniqueId.eq(targetMemberUniqueId.toString())
                     .and(member.deleteFlag.eq('N')),
