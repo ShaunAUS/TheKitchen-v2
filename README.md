@@ -23,3 +23,5 @@ Skills
 STYLE
 - ktlint
 
+
+![kitchenimage](https://github.com/user-attachments/assets/4195f2c7-b61a-4606-8100-0c1dbcc6bd93)
